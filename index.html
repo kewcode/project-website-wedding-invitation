@@ -5729,36 +5729,36 @@
                 <div class="clear"></div>
             </div>
 
-            <form id="send">
+            <form id="wishes_form">
                 <div id="radio">
                     &nbsp; Kehadiran:<br>
-                    <input class="checkbox" type="radio" name="rsvp" value="hadir" checked> Hadir
-                    <input class="checkbox" type="radio" name="rsvp" value="tidak"> Tidak Hadir
+                    <input class="checkbox" type="radio" id="rsvp" name="rsvp" value="hadir" checked> Hadir
+                    <input class="checkbox" type="radio" id="rsvp" name="rsvp" value="tidak"> Tidak Hadir
                 </div>
                 <br>
                 <div class="guest-1">
-                    <select class="wow zoomIn" type="text" name="jumlah" required>
-                        <option value="1 Person"> - Tamu -</option>
-                        <option> 1 Tamu </option>
-                        <option> 2 Tamu </option>
-                        <option> 3 Tamu </option>
-                        <option> 4 Tamu </option>
-                        <option> 5 Tamu </option>
-                        <option> 6 Tamu </option>
-                        <option> Lainnya </option>
+                    <select class="wow zoomIn" type="text" id="jumlah" required>
+                        <option value="1"> - Tamu -</option>
+                        <option value="1"> 1 Tamu </option>
+                        <option value="2"> 2 Tamu </option>
+                        <option value="3"> 3 Tamu </option>
+                        <option value="4"> 4 Tamu </option>
+                        <option value="5"> 5 Tamu </option>
+                        <option value="6"> 6 Tamu </option>
+                        <option value="0"> Lainnya </option>
                     </select>
                     <center>
-                        <input class="wow zoomIn" type="text" name="yourname" placeholder="Nama.." value=""
+                        <input class="wow zoomIn" type="text" id="nama" placeholder="Nama.." value=""
                             required><br>
-                        <input class="wow zoomIn" data-wow-delay="0.1s" type="text" name="who"
+                        <input class="wow zoomIn" data-wow-delay="0.1s" type="text" id="hubungan"
                             placeholder="Hubungan, contoh: Keluarga"><br>
-                        <textarea class="wow zoomIn" data-wow-delay="0.2s" type="text" name="comment"
+                        <textarea style="color: black;"  class="wow zoomIn" data-wow-delay="0.2s" name="comment" id="comment"
                             placeholder="Pesan atau Do'a.." required></textarea>
                     </center>
                 </div>
 
                 <div class="guest-1">
-                    <button class="wow zoomIn" data-wow-delay="0.3s" type="button" name="tes" onClick="sending()">Kirim
+                    <button class="wow zoomIn" data-wow-delay="0.3s" type="button" name="tes" onClick="simpanComment()">Kirim
                         <i class="fas fa-heart"></i> </button>
                 </div>
             </form>
@@ -5767,35 +5767,8 @@
     </div>
     <div id="comment">
         <div class="container">
-            <div class="comment-1">
-                <div class='comment-1-1'>Comment Here..</div>
-                <div class='comment-2'>
-                <div class='comment-3'>Ari
-                        <span class='comment-3-1'>Admin FrilaRobi.tech &#128149;
-                            (id: @aribahtiar | web: www.FrilaRobi.tech)</span>
-                    </div>
-                 <div class='comment-4'><i class='fas fa-comment'></i> Selamat ya
-                        ka Frila & ka Robi, semoga dilancarkan hingga hari H dan selalu menjadi pasangan yang
-                        berbahagia dan menjadi keluarga yang sakinah, mawadah serta warahmah.. aamiin..
-                        &#129330;&#128149;&#129333;&#128112;&#129392;&#129395;</div>
-                </div>
-
-
-                <div class='comment-2 tidak'>
-                    <div class='comment-3'>Irfa Nur <span class='comment-3-1'>&nbsp;Temen SATAS x2 </span></div>
-                    <div class='comment-4'>Masyaalloh barakallah Mugyyy semoga dilancarkan segalanya, diberikan
-                        kesehatan, dan kebahagiaan. Selamat mugy wilujeng bahagia selalu Mugy dan pasangannya 🙏</div>
-                </div>
-                <div class='comment-2 hadir'>
-                    <div class='comment-3'>Bripda Jajang M Nurdin<span class='comment-3-1'>&nbsp;Senior Kakak
-                            letting</span><span class='comment-3-1 comment-3-2'> (Jumlah Orang: 2 Tamu)</span></div>
-                    <div class='comment-4'>Semoga diberikan kelancaran sampai hari H serta menjadi keluarga samawa.
-                        Aamiin yaarabbalallamin..</div>
-                </div>
-
-
-            </div>
-            <div class="comments">
+            <div class="comment-1" id="wishesUI">
+                
             </div>
         </div>
     </div>
@@ -6034,21 +6007,28 @@
             <div id="footer-1-3">
                 Copyright &copy; 2020. By FrilaRobi.tech &trade;
             </div>
+            
         </center>
     </div>
+
+    <br>
 
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <script>
+
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDnsnIgWTOoZQ_wIqRwLORHwogQ8z3W5yw",
     authDomain: "wedding-d5479.firebaseapp.com",
+    databaseURL: "https://wedding-d5479-default-rtdb.firebaseio.com",
     projectId: "wedding-d5479",
     storageBucket: "wedding-d5479.appspot.com",
     messagingSenderId: "485005363559",
@@ -6057,8 +6037,57 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+  var database = firebase.database();
 
-  console.log(firebase)
+  var wishesRef = database.ref('wishes');
+  wishesRef.on('value', (snapshot) =>{
+    const data = Object.values(snapshot.val()).reverse();
+    
+
+    console.log(typeof data);
+
+    var allComment = '';
+
+    // console.log(data.length);
+
+    for (let i = 0; i < data.length; i++) {
+        
+        
+        // console.log(data[i].nama)
+        allComment += `
+        <div class='comment-3'> ${data[i].nama}
+            <span class='comment-3-1'>${data[i].hubungan}</span>
+        </div>
+
+        <div class='comment-4'>
+            ${data[i].comment}
+        </div>`;
+    }
+
+    // console.log(allComment)
+
+    $("#wishesUI").html(allComment)
+});
+
+
+function simpanComment() {
+
+    wishesRef.push({
+        rsvp: $("#rsvp").val(),
+        jumlah: $("#jumlah").val(),
+        nama : $("#nama").val(),
+        hubungan: $("#hubungan").val(),
+        comment: $("#comment").val()
+    });
+
+
+    $("#wishes_form").hide();
+    
+
+}
+
+
+  
 </script>
 
 
