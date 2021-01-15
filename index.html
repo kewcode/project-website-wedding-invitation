@@ -5212,6 +5212,14 @@ body{
                 font-size: 12px;
             }
         }
+
+        .display-none{
+            display: none;
+        }
+
+        .display-block{
+            display: block;
+        }
     </style>
     <div id="popup">
         <div class="popup-1">
@@ -5402,7 +5410,7 @@ body{
                 <div class="clear"></div>
             </div>
             <a
-                href="https://calendar.google.com/calendar/r/eventBoit?text=Mugy+%26+Luxman+Resepsi+Pernikahan&dates=20201114T110000/202011147T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
+                href="https://calendar.google.com/calendar/r/eventBoit?text=Frila+%26+Robi+Resepsi+Pernikahan&dates=20210131T110000/202101317T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
                 <div class="slide-2-3" style="color:white">Save Wedding Date</div>
             </a>
             <div class="scroll">Scroll Now <Br> &darr;</div>
@@ -5424,7 +5432,7 @@ body{
                 <div class="clear"></div>
             </div>
             <a
-                href="https://calendar.google.com/calendar/r/eventBoit?text=Mugy+%26+Luxman+Resepsi+Pernikahan&dates=20201114T110000/202011147T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
+                href="https://calendar.google.com/calendar/r/eventBoit?text=Frila+%26+Robi+Resepsi+Pernikahan&dates=20210131T110000/202101317T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
                 <div class="slide-2-3" style="color:white">Save Wedding Date</div>
             </a>
             <div class="scroll">Scroll Now <Br> &darr;</div>
@@ -5584,7 +5592,7 @@ body{
                 </div>
                 <div class="clear"></div>
                 <a
-                    href="https://calendar.google.com/calendar/r/eventBoit?text=Mugy+%26+Luxman+Resepsi+Pernikahan&dates=20201114T110000/202011147T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
+                    href="https://calendar.google.com/calendar/r/eventBoit?text=Frila+%26+Robi+Resepsi+Pernikahan&dates=20201114T110000/202011147T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
                     <div class="reception-3-4">Save The Date</div>
                 </a>
             </div>
@@ -5621,7 +5629,7 @@ body{
                 </div>
                 <div class="clear"></div>
                 <a
-                    href="https://calendar.google.com/calendar/r/eventBoit?text=Mugy+%26+Luxman+Resepsi+Pernikahan&dates=20201114T110000/202011147T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
+                    href="https://calendar.google.com/calendar/r/eventBoit?text=Frila+%26+Robi+Resepsi+Pernikahan&dates=20201114T110000/202011147T110000&ctz=Asia/Jakarta&details=We+would+be+more+than+happy+to+see+Your+bright+faces+in+our+wedding&location=Hotel+Metro+Tasikmalaya&pli=1&uid=1521339627addtocalendar&sf=true&output=xml">
                     <div class="reception-3-4">Save The Date</div>
                 </a>
             </div>
@@ -5758,6 +5766,14 @@ body{
     <div id="guest">
         <div class="container">
 
+
+
+            <div class="hide" style="background:red;color:white; text-align: center;margin: auto;margin-top: -30px;" onclick="bukaAturanGift()" > open for gift </div> &nbsp;
+
+            <p id="aturangift" style="text-align: center;">
+                    " Aturan Gift "
+            </p>
+          
         
             <div class="location-1">
                 <div class="location-2">Wedding&nbsp;</div>
@@ -5801,15 +5817,7 @@ body{
                 </div>
             </form>
 
-            <div class="hide" style="color:#231f20;text-align: center;margin: auto;" onClick="opengift()"> open for gift </div> &nbsp;
-
-            <p>
-                <div class="container">
-                    <div class="comment-1" >
-                        Aturan Gift
-                    </div>
-                </div>
-            </p>
+            
 
         </div>
     </div>
@@ -6136,9 +6144,12 @@ function simpanComment() {
 }
 
 
-  
-</script>
+    $("#aturangift").addClass("display-none")
 
+    function bukaAturanGift(){
+        $("#aturangift").addClass('display-block');
+    }
+    </script>
 
 </body>
 
